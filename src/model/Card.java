@@ -1,51 +1,38 @@
 package model;
-
 public class Card {
     private int number;
-    private boolean isFacedDown;
+    private boolean facedDown;
 
-
-    public Card() {
-    }
-
-    public Card(int number, boolean isFacedDown) {
+    public Card(int number) {
         this.number = number;
-        this.isFacedDown = isFacedDown;
+        this.facedDown = true;
     }
 
     public int getNumber() {
         return this.number;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public boolean isFacedDown() {
+        return this.facedDown;
     }
 
-    public boolean getIsFacedDown() {
-        return this.isFacedDown;
-    }
-
-    public void setIsFacedDown(boolean isFacedDown) {
-        this.isFacedDown = isFacedDown;
+    public void flip() {
+        this.facedDown = !this.facedDown; 
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Card)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Card card = (Card) o;
-        return number == card.number && isFacedDown == card.isFacedDown;
+        return number == card.number;
     }
 
     @Override
     public String toString() {
-        return "{" +
-            " number='" + getNumber() + "'" +
-            ", isFacedDown='" + getIsFacedDown() + "'" +
-            "}";
+        return "Card{" +
+                "number=" + number +
+                ", facedDown=" + facedDown +
+                '}';
     }
-    
 }
