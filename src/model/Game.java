@@ -37,7 +37,7 @@ public class Game {
 
     private void checkMatch() {
         if (firstSelectedCard != null && secondSelectedCard != null) {
-            if (firstSelectedCard.equals(secondSelectedCard)) {
+            if (firstSelectedCard.getNumber()==secondSelectedCard.getNumber()) {
                 score++;
                 matchedCards.add(firstSelectedCard);
                 matchedCards.add(secondSelectedCard);

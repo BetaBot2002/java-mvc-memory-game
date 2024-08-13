@@ -26,13 +26,17 @@ public class Deck {
         Collections.shuffle(cards);
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
     public Card getCard(int index) {
         if (index < 0 || index >= cards.size()) {
             return null;
         }
         return cards.get(index);
     }
-
+ 
     public boolean isEmpty() {
         return cards.stream().allMatch(card -> !card.isFacedDown());
     }
