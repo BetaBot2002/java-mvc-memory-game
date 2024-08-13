@@ -29,6 +29,7 @@ public class Game {
             firstSelectedCard = selectedCard;
         } else {
             secondSelectedCard = selectedCard;
+            score++;
             checkMatch();
         }
 
@@ -38,7 +39,6 @@ public class Game {
     private void checkMatch() {
         if (firstSelectedCard != null && secondSelectedCard != null) {
             if (firstSelectedCard.getNumber()==secondSelectedCard.getNumber()) {
-                score++;
                 matchedCards.add(firstSelectedCard);
                 matchedCards.add(secondSelectedCard);
             } else {
