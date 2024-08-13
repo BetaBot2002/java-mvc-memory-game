@@ -50,6 +50,21 @@ public class CLIView implements GameView {
     }
 
     @Override
+    public void displayMatchedMessage() {
+        System.out.println("Pair Matched");   
+    }
+
+    @Override
+    public void displayNotMatchedMessage() {
+        System.out.println("Pair Not Matched");   
+    }
+
+    @Override
+    public void displayCurrentScoreMessage(int score) {
+        System.out.println("Current Score is: "+score);
+    }
+
+    @Override
     public void displayGameOverMessage(int score) {
         System.out.println("Game Over! Your score is: " + score);
         System.out.println("Thanks for playing!");

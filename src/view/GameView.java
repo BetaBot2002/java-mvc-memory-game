@@ -10,6 +10,9 @@ public interface GameView {
     void displayBoard(Deck deck, List<Card> matchedCards);
     void displayCardFlipped(Card card);
     void displayInvalidSelectionMessage();
+    void displayMatchedMessage();
+    void displayNotMatchedMessage();
+    void displayCurrentScoreMessage(int score);
     void displayGameOverMessage(int score);
     int promptForCardSelection();
 }

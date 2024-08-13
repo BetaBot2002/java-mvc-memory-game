@@ -30,17 +30,21 @@ public class Game {
         } else {
             secondSelectedCard = selectedCard;
             score++;
-            checkMatch();
         }
-
         return true;
     }
 
-    private void checkMatch() {
+    public boolean twoCardsSelected(){
+        return firstSelectedCard != null && secondSelectedCard != null;
+    }
+
+    public boolean checkMatch() {
+        boolean matched=false;
         if (firstSelectedCard != null && secondSelectedCard != null) {
             if (firstSelectedCard.getNumber()==secondSelectedCard.getNumber()) {
                 matchedCards.add(firstSelectedCard);
                 matchedCards.add(secondSelectedCard);
+                matched=true;
             } else {
                 firstSelectedCard.flip();
                 secondSelectedCard.flip();
@@ -49,6 +53,7 @@ public class Game {
             firstSelectedCard = null;
             secondSelectedCard = null;
         }
+        return matched;
     }
 
     public boolean isGameOver() {

@@ -15,15 +15,22 @@ public class GameController {
 
     private void startGame() {
         view.displayWelcomeMessage();
+        view.displayBoard(game.getDeck(), game.getMatchedCards());
         while (!game.isGameOver()) {
-            view.displayBoard(game.getDeck(), game.getMatchedCards());
             int cardIndex = view.promptForCardSelection();
 
             if (game.selectCard(cardIndex)) {
                 view.displayCardFlipped(game.getDeck().getCard(cardIndex));
-                // if (game.getMatchedCards().size() % 2 == 0) {
-                //     view.displayBoard(game.getDeck(), game.getMatchedCards());
-                // }
+                view.displayBoard(game.getDeck(), game.getMatchedCards());
+                if (game.twoCardsSelected()) {
+                    if (game.checkMatch()) {
+                        view.displayMatchedMessage();
+                    } else {
+                        view.displayNotMatchedMessage();
+                    }
+                }
+                view.displayCurrentScoreMessage(game.getScore());
+                view.displayBoard(game.getDeck(), game.getMatchedCards());
             } else {
                 view.displayInvalidSelectionMessage();
             }
