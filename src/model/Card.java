@@ -20,13 +20,6 @@ public class Card {
         this.facedDown = !this.facedDown; 
     }
 
-    // @Override
-    // public boolean equals(Object o) {
-    //     if (o == null || getClass() != o.getClass()) return false;
-    //     Card card = (Card) o;
-    //     return number == card.number;
-    // }
-
     @Override
     public String toString() {
         return "Card{" +
