@@ -34,22 +34,26 @@ public class Game {
         return true;
     }
 
-    public boolean twoCardsSelected(){
+    public boolean twoCardsSelected() {
         return firstSelectedCard != null && secondSelectedCard != null;
     }
 
     public boolean checkMatch() {
-        boolean matched=false;
+        boolean matched = false;
         if (firstSelectedCard != null && secondSelectedCard != null) {
-            if (firstSelectedCard.getNumber()==secondSelectedCard.getNumber()) {
+            if (firstSelectedCard.getNumber() == secondSelectedCard.getNumber()) {
                 matchedCards.add(firstSelectedCard);
                 matchedCards.add(secondSelectedCard);
-                matched=true;
+                matched = true;
             } else {
                 firstSelectedCard.flip();
                 secondSelectedCard.flip();
             }
-
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             firstSelectedCard = null;
             secondSelectedCard = null;
         }
