@@ -1,5 +1,6 @@
 package controller;
 
+import model.Card;
 import model.Game;
 import view.GameView;
 
@@ -7,13 +8,12 @@ public class GameController {
     private Game game;
     private GameView view;
 
-    public GameController(int numberOfUniqueCards, GameView view) {
-        this.game = new Game(numberOfUniqueCards);
+    public GameController(Game game, GameView view) {
+        this.game = game;
         this.view = view;
-        startGame();
     }
 
-    private void startGame() {
+    public void startGame() {
         view.displayWelcomeMessage();
         view.displayBoard(game.getDeck(), game.getMatchedCards());
         while (!game.isGameOver()) {
@@ -36,7 +36,11 @@ public class GameController {
             }
 
             if (game.isGameOver()) {
+                for (Card card : game.getDeck().getCards()) {
+                    if(card.isFacedDown()) card.flip();
+                }
                 view.displayGameOverMessage(game.getScore());
+                view.displayBoard(game.getDeck(), game.getMatchedCards());
             }
         }
     }
