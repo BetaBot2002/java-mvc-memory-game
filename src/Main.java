@@ -51,7 +51,6 @@ public class Main {
                         numberOfUniqueCards = scanner.nextInt();
                     }
 
-                    // Initialize the game and start the game using the selected view
                     game = new Game(numberOfUniqueCards);
                     GameController controller = new GameController(game, view);
                     controller.startGame();
