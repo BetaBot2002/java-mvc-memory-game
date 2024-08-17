@@ -51,7 +51,7 @@ public class GUIView extends JFrame implements GameView {
             button.setFont(new Font("Arial", Font.BOLD, 20));
             button.setFocusPainted(false);
             button.setActionCommand(String.valueOf(i));
-            button.setEnabled(card.isFacedDown() && !matchedCards.contains(card));
+            // button.setEnabled(card.isFacedDown() && !matchedCards.contains(card));
 
             button.addActionListener(new ActionListener() {
                 @Override
@@ -76,7 +76,7 @@ public class GUIView extends JFrame implements GameView {
 
     @Override
     public void displayInvalidSelectionMessage() {
-        messageLabel.setText("Invalid selection. Please try again.");
+        JOptionPane.showMessageDialog(null, "Invalid selection. Please try again.", "Warning", JOptionPane.WARNING_MESSAGE);
     }
 
     @Override

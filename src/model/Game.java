@@ -46,14 +46,15 @@ public class Game {
                 matchedCards.add(secondSelectedCard);
                 matched = true;
             } else {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 firstSelectedCard.flip();
                 secondSelectedCard.flip();
             }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
             firstSelectedCard = null;
             secondSelectedCard = null;
         }
