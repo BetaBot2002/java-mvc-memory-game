@@ -46,20 +46,31 @@ public class GUIView extends JFrame implements GameView {
 
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
-            UIManager.put("Button.disabledText", Color.BLACK);
-            JButton button = new JButton(card.isFacedDown() ? "X" : String.valueOf(card.getNumber()));
-            button.setFont(new Font("Arial", Font.BOLD, 20));
-            button.setFocusPainted(false);
-            button.setActionCommand(String.valueOf(i));
-            // button.setEnabled(card.isFacedDown() && !matchedCards.contains(card));
+            JButton button;
+            
+            if (matchedCards.contains(card)) {
+                button = new JButton("");
+                button.setEnabled(true); 
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JOptionPane.showMessageDialog(null, "This card is already matched.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+                });
+            } else {
+                button = new JButton(card.isFacedDown() ? "X" : String.valueOf(card.getNumber()));
+                button.setFont(new Font("Arial", Font.BOLD, 20));
+                button.setFocusPainted(false);
+                button.setActionCommand(String.valueOf(i));
 
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    selectedCardIndex = Integer.parseInt(e.getActionCommand());
-                    cardSelected = true;
-                }
-            });
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        selectedCardIndex = Integer.parseInt(e.getActionCommand());
+                        cardSelected = true;
+                    }
+                });
+            }
 
             cardButtons[i] = button;
             boardPanel.add(button);
