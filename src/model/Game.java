@@ -39,26 +39,8 @@ public class Game {
     }
 
     public boolean checkMatch() {
-        boolean matched = false;
-        if (firstSelectedCard != null && secondSelectedCard != null) {
-            if (firstSelectedCard.getNumber() == secondSelectedCard.getNumber()) {
-                matchedCards.add(firstSelectedCard);
-                matchedCards.add(secondSelectedCard);
-                matched = true;
-            } else {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                firstSelectedCard.flip();
-                secondSelectedCard.flip();
-            }
-
-            firstSelectedCard = null;
-            secondSelectedCard = null;
-        }
-        return matched;
+        return firstSelectedCard != null && secondSelectedCard != null
+                && firstSelectedCard.getNumber() == secondSelectedCard.getNumber();
     }
 
     public boolean isGameOver() {
@@ -75,5 +57,21 @@ public class Game {
 
     public Deck getDeck() {
         return deck;
+    }
+
+    public Card getFirstSelectedCard() {
+        return firstSelectedCard;
+    }
+
+    public Card getSecondSelectedCard() {
+        return secondSelectedCard;
+    }
+
+    public void setFirstSelectedCard(Card card) {
+        firstSelectedCard = card;
+    }
+
+    public void setSecondSelectedCard(Card card) {
+        secondSelectedCard = card;
     }
 }

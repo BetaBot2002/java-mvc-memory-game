@@ -23,10 +23,15 @@ public class GameController {
                 view.displayCardFlipped(game.getDeck().getCard(cardIndex));
                 view.displayBoard(game.getDeck(), game.getMatchedCards());
                 if (game.twoCardsSelected()) {
+                    try {
+                        Thread.sleep(1000); // Delay so the user can see the card before flipping back
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     if (game.checkMatch()) {
-                        view.displayMatchedMessage();
+                        handleMatch();
                     } else {
-                        view.displayNotMatchedMessage();
+                        handleNotMatch();
                     }
                 }
                 view.displayCurrentScoreMessage(game.getScore());
@@ -37,11 +42,30 @@ public class GameController {
 
             if (game.isGameOver()) {
                 for (Card card : game.getDeck().getCards()) {
-                    if(card.isFacedDown()) card.flip();
+                    if (card.isFacedDown())
+                        card.flip();
                 }
                 view.displayGameOverMessage(game.getScore());
                 view.displayBoard(game.getDeck(), game.getMatchedCards());
             }
         }
+    }
+
+    private void handleMatch() {
+
+        game.getMatchedCards().add(game.getFirstSelectedCard());
+        game.getMatchedCards().add(game.getSecondSelectedCard());
+        game.setFirstSelectedCard(null);
+        game.setSecondSelectedCard(null);
+        view.displayMatchedMessage();
+    }
+
+    private void handleNotMatch() {
+
+        game.getFirstSelectedCard().flip();
+        game.getSecondSelectedCard().flip();
+        game.setFirstSelectedCard(null);
+        game.setSecondSelectedCard(null);
+        view.displayNotMatchedMessage();
     }
 }
