@@ -21,10 +21,13 @@
     │   ├── view/
     │   │   ├── GameView.java
     │   │   ├── CLIView.java
-    │   │   └── GUIView.java   // Placeholder for future GUI view
+    │   │   └── GUIView.java
     │   │
     │   ├── controller/
     │   │   └── GameController.java
+    │   │
+    │   ├── utilities/
+    │   │   └── UserInputGUI.java
     │   │
     │   └── Main.java
     │
