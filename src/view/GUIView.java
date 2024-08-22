@@ -16,7 +16,7 @@ public class GUIView extends JFrame implements GameView {
     private int selectedCardIndex;
     private boolean cardSelected;
 
-    public GUIView() {
+    public GUIView(int n) {
         setTitle("Memory Game");
         setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,7 +27,7 @@ public class GUIView extends JFrame implements GameView {
         add(messageLabel, BorderLayout.NORTH);
 
         boardPanel = new JPanel();
-        boardPanel.setLayout(new GridLayout(0, 4)); // 4 cards per row
+        boardPanel.setLayout(new GridLayout(0, 2*n)); // 4 cards per row
         add(boardPanel, BorderLayout.CENTER);
 
         setVisible(true);

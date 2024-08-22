@@ -35,12 +35,12 @@ public class Main {
                         System.out.print("Enter the number of unique cards (n): ");
                         numberOfUniqueCards = scanner.nextInt();
                     } else if (viewChoice == 2) {
-                        view = new GUIView();
                         System.out.println("GUI View selected.");
                         UserInputGUI inputGUI = new UserInputGUI();
                         inputGUI.setVisible(true);
                         numberOfUniqueCards = inputGUI.getNumberOfUniqueCards();
                         System.out.println(numberOfUniqueCards);
+                        view = new GUIView(numberOfUniqueCards);
                     } else {
                         System.out.println("Invalid choice. Please try again.");
                         break;

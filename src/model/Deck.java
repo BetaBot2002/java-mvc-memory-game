@@ -14,10 +14,9 @@ public class Deck {
     }
 
     private void generateDeck(int numberOfUniqueCards) {
-        int totalCards = 4 * numberOfUniqueCards * numberOfUniqueCards;
-        for (int i = 1; i <= numberOfUniqueCards; i++) {
-            for (int j = 0; j < totalCards / numberOfUniqueCards; j++) {
-                cards.add(new Card(i));
+        for (int i = 0; i < 4; i++) {
+            for (int j = 1; j <= numberOfUniqueCards * numberOfUniqueCards; j++) {
+                cards.add(new Card(j));
             }
         }
     }
@@ -36,7 +35,7 @@ public class Deck {
         }
         return cards.get(index);
     }
- 
+
     public boolean isEmpty() {
         return cards.stream().allMatch(card -> !card.isFacedDown());
     }
